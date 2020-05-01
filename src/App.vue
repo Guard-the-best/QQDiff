@@ -1,27 +1,23 @@
 <template>
   <div id="app">
-    <welcome/>
+    <!-- <welcome/> -->
+    <loginAndRegister loginErrorMsg=""/>
   </div>
 </template>
 
 <script>
-import welcome from './components/welcome.vue';
+// import welcome from './components/welcome.vue';
+import loginAndRegister from './components/content/login-and-register.vue';
 
 export default {
   name: 'App',
   components: {
-    welcome
+    // welcome,
+    // login
+    loginAndRegister
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>

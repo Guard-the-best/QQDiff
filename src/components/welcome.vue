@@ -3,7 +3,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="/toLoginAndRegister">登陆/注册</a>
+        <a class="navbar-brand js-scroll-trigger" href="/toLoginAndRegister">登陆/注册</a><!--href-->
         <button
           class="navbar-toggler navbar-toggler-right"
           type="button"
@@ -142,7 +142,7 @@
                 id="inputEmail"
                 placeholder="Enter email address..."
               />
-              <button type="submit" class="btn btn-primary mx-auto">Subscribe</button>
+              <button v-on:click="subscribe" type="submit" class="btn btn-primary mx-auto">Subscribe</button>
             </form>
           </div>
         </div>
@@ -225,7 +225,12 @@ import "jquery.easing/jquery.easing.min.js";
 
 // import $ from "jquery/dist/jquery.min.js";
 export default {
-  name: "welcome"
+  name: "welcome",
+  methods: {
+    subscribe:function(){
+      alert("not allowed");
+    }
+  }
 };
 
 // function serachempbypage(page) {
