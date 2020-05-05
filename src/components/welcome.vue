@@ -1,9 +1,10 @@
 <template>
   <div id="page-top">
     <!-- Navigation -->
+    
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="/toLoginAndRegister">登陆/注册</a><!--href-->
+        <router-link class="navbar-brand js-scroll-trigger" to="/loginAndRegister">登陆/注册</router-link><!--href-->
         <button
           class="navbar-toggler navbar-toggler-right"
           type="button"
@@ -201,6 +202,7 @@
     <footer class="bg-black small text-center text-white-50">
       <div class="container">Copyright &copy; 2019 Dyp. All rights reserved.</div>
     </footer>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -220,6 +222,7 @@ import "jquery/dist/jquery.min.js";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 // Plugin JavaScript
 import "jquery.easing/jquery.easing.min.js";
+// import loginAndRegister from "./content/login-and-register"
 //Custom scripts for this template
 // import "startbootstrap-grayscale/js/grayscale.js";
 
@@ -233,6 +236,8 @@ export default {
   }
 };
 
+
+
 // function serachempbypage(page) {
 //   $.ajax({
 //       type: "post",
@@ -243,4 +248,8 @@ export default {
 //       }
 //   })
 // }
+
+
+
+
 </script>

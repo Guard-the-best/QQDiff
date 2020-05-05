@@ -1,20 +1,22 @@
 <template>
   <div id="app">
-    <!-- <welcome/> -->
-    <loginAndRegister loginErrorMsg=""/>
+    <container/>
+    <!-- <loginAndRegister loginErrorMsg=""/> -->
   </div>
 </template>
 
 <script>
+import container from './components/util/main-container'
 // import welcome from './components/welcome.vue';
-import loginAndRegister from './components/content/login-and-register.vue';
+// import loginAndRegister from './components/content/login-and-register.vue';
 
 export default {
   name: 'App',
   components: {
-    // welcome,
+    container
+    // welcome
     // login
-    loginAndRegister
+    // loginAndRegister
   }
 }
 </script>

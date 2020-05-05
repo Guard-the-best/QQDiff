@@ -35,7 +35,7 @@
 </template>
 <script>
 import _ from "lodash/lodash.min.js";
-import axios from 'axios/dist/axios.min.js';
+// import axios from 'axios/dist/axios.min.js';
 import inputItem from "../util/input-item.vue";
 export default {
   name: "register",

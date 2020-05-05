@@ -33,6 +33,9 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 + [单文件组件](https://cn.vuejs.org/v2/guide/single-file-components.html)
 
++ [路由](https://router.vuejs.org/zh/guide/)
+    +  **动态路由** 和 **嵌套路由** 可以帮助构建商品展示、用户信息方面的内容
+
 ### 其他
 
 + [动态搜索](https://www.lodashjs.com/docs/lodash.debounce)
