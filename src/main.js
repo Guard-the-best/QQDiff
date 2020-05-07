@@ -7,6 +7,7 @@ import welcome from './components/welcome.vue'
 Vue.config.productionTip = false
 
 const router = new VueRouter({
+  mode: 'history',
   routes:[
     {path: '/loginAndRegister', components: {default: loginAndRegister}},
     {path: '/welcome', components: {default: welcome}}

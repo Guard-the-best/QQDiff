@@ -40,6 +40,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 + [动态搜索](https://www.lodashjs.com/docs/lodash.debounce)
 
++ [HTML5 History模式](https://router.vuejs.org/zh/guide/essentials/history-mode.html) <small>要好看!</small>
+
 + 考虑最基本的head、content、foot等body布局使用单文件组件(template+script+style),并导出、注册、使用。
 
 + 建议安装一个vue.js的chrome扩展用于debug
