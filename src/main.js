@@ -16,7 +16,7 @@ const router = new VueRouter({
 
 Vue.use(VueRouter)
 
-router.push({path: 'welcome'})
+// router.push({path: 'welcome'})
 
 new Vue({
   router,
