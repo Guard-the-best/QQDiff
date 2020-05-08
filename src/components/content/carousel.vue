@@ -32,37 +32,38 @@
 </template>
 
 <script>
+
 export default {
     name: 'carousel',
     data:function() {
         return {
             pics:[
                 {
-                    name: '🐎',
+                    name: '🐴',
                     description: 'My name is Tony',
                     route: 'category/',
-                    imgSrc: 'static/img/carousel1.jpg',
+                    imgSrc: require('../../../public/img/carousel1.jpg'),
                     order: 0
                 },
                 {
                     name: '🐱',
                     description: 'meow',
                     route: 'category/',
-                    imgSrc: 'static/img/carousel2.jpg',
+                    imgSrc: require('../../../public/img/carousel2.jpg'),
                     order: 1
                 },
                 {
-                    name: '🐕',
+                    name: '🐶',
                     description: 'wang',
                     route: 'category/101',
-                    imgSrc: 'static/img/carousel3.jpg',
+                    imgSrc: require('../../../public/img/carousel3.jpg'),
                     order: 2
                 },
                 {
                     name: '🐟',
                     description: 'bub',
                     route: 'category/',
-                    imgSrc: 'static/img/carousel4.jpg',
+                    imgSrc: require('../../../public/img/carousel4.jpg'),
                     order: 3
                 }
             ]
