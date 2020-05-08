@@ -3,6 +3,7 @@
     <carousel/>
     <!-- <container/> -->
     <!-- <loginAndRegister loginErrorMsg=""/> -->
+    <!-- <welcome/> -->
   </div>
 </template>
 
@@ -15,11 +16,11 @@ import carousel from './components/content/carousel'
 export default {
   name: 'App',
   components: {
-    carousel
-    // container
-    // welcome
-    // login
-    // loginAndRegister
+    carousel,
+    // container,
+    // welcome,
+    // login,
+    // loginAndRegister,
   }
 }
 </script>

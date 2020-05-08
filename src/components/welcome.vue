@@ -57,7 +57,7 @@
             </p>
           </div>
         </div>
-        <img src="../../static/img/catAnddog.png" class="img-fluid" alt />
+        <img src="@/assets/img/catAnddog.png" class="img-fluid" alt />
       </div>
     </section>
 
@@ -67,7 +67,7 @@
         <!-- Featured Project Row -->
         <div class="row align-items-center no-gutters mb-4 mb-lg-5">
           <div class="col-xl-8 col-lg-7">
-            <img class="img-fluid mb-3 mb-lg-0" src="../../static/img/Parrot.jpg" alt="蓝黄金刚鹦鹉" />
+            <img class="img-fluid mb-3 mb-lg-0" src="@/assets/img/Parrot.jpg" alt="蓝黄金刚鹦鹉" />
           </div>
           <div class="col-xl-4 col-lg-5">
             <div class="featured-text text-center text-lg-left">
@@ -84,7 +84,7 @@
         <!-- Project One Row -->
         <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
           <div class="col-lg-6">
-            <img class="img-fluid" src="../../static/img/Corgi.jpg" alt="威尔士柯基犬" />
+            <img class="img-fluid" src="@/assets/img/Corgi.jpg" alt="威尔士柯基犬" />
           </div>
           <div class="col-lg-6">
             <div class="bg-black text-center h-100 project">
@@ -106,7 +106,7 @@
         <!-- Project Two Row -->
         <div class="row justify-content-center no-gutters">
           <div class="col-lg-6">
-            <img class="img-fluid" src="../../static/img/PersianCat.jpg" alt />
+            <img class="img-fluid" src="@/assets/img/PersianCat.jpg" alt />
           </div>
           <div class="col-lg-6 order-lg-first">
             <div class="bg-black text-center h-100 project">

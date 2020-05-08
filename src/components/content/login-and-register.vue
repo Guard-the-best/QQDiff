@@ -67,7 +67,7 @@ export default {
 
 <style type="text/css">
 body {
-  background: url("../../../static/img/login.jpg") no-repeat center center fixed;
+  background: url("'@/assets/img/login.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
