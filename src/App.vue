@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <carousel/>
+    <products/>
+    <!-- <carousel/> -->
     <!-- <container/> -->
     <!-- <loginAndRegister loginErrorMsg=""/> -->
     <!-- <welcome/> -->
@@ -8,7 +9,8 @@
 </template>
 
 <script>
-import carousel from './components/content/carousel'
+import products from './components/content/products'
+// import carousel from './components/content/carousel'
 // import container from './components/util/main-container'
 // import welcome from './components/welcome.vue';
 // import loginAndRegister from './components/content/login-and-register.vue';
@@ -16,11 +18,12 @@ import carousel from './components/content/carousel'
 export default {
   name: 'App',
   components: {
-    carousel,
+    // carousel,
     // container,
     // welcome,
     // login,
     // loginAndRegister,
+    products,
   }
 }
 </script>
