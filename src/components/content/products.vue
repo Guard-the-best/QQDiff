@@ -32,6 +32,7 @@ export default {
     name: "products",
     data: function(){
         return {
+            categoryName: "dog",
             products: [
                 {
                     productId: 1001,
