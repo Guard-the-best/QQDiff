@@ -2,7 +2,7 @@
   <div id="page-top">
     <!-- Navigation -->
     
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="background-color:#24292e;">
       <div class="container">
         <router-link class="navbar-brand js-scroll-trigger" to="/loginAndRegister">登陆/注册</router-link><!--href-->
         <button
@@ -172,7 +172,7 @@
                 <h4 class="text-uppercase m-0">Email</h4>
                 <hr class="my-4" />
                 <div class="small text-black-50">
-                  <a href="#">Chritopher@foxmail.com</a>
+                  <a href="mailto:dyp@foxmail.com">Chritopher@foxmail.com</a>
                 </div>
               </div>
             </div>
@@ -209,22 +209,21 @@
 <script>
 //Bootstrap core CSS
 import "bootstrap/dist/css/bootstrap.min.css";
-
 //Custom fonts for this template
 import "@fortawesome/fontawesome-free/css/all.min.css";
-
 //Custom styles for this template
 import "startbootstrap-grayscale/css/grayscale.css";
 
-
 // Bootstrap core JavaScript
-import "jquery/dist/jquery.min.js";
+// import "jquery/dist/jquery.min.js";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 // Plugin JavaScript
-import "jquery.easing/jquery.easing.min.js";
-// import loginAndRegister from "./content/login-and-register"
+// import "jquery.easing/jquery.easing.min.js";
 //Custom scripts for this template
-// import "startbootstrap-grayscale/js/grayscale.js";
+// import "startbootstrap-grayscale/js/grayscale.min.js";
+
+
+// import loginAndRegister from "./content/login-and-register"
 
 // import $ from "jquery/dist/jquery.min.js";
 export default {
