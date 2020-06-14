@@ -1,19 +1,19 @@
 <template>
   <div id="app">
-    <topBar/>
+    <!-- <topBar/> -->
     <!-- <products/> -->
-    <carousel/>
-    <carousel/>
+    <!-- <carousel/> -->
+    <!-- <carousel/> -->
     <!-- <mainContainer/> -->
     <!-- <loginAndRegister loginErrorMsg=""/> -->
-    <!-- <welcome/> -->
+    <router-view/>
   </div>
 </template>
 
 <script>
-import topBar from './components/util/top-bar'
+// import topBar from './components/util/top-bar'
 // import products from './components/content/products'
-import carousel from './components/content/carousel'
+// import carousel from './components/content/carousel'
 // import mainContainer from './components/util/main-container'
 // import welcome from './components/welcome.vue';
 // import loginAndRegister from './components/content/login-and-register.vue';
@@ -21,13 +21,13 @@ import carousel from './components/content/carousel'
 export default {
   name: 'App',
   components: {
-    carousel,
+    // carousel,
     // mainContainer,
     // welcome,
     // login,
     // loginAndRegister,
     // products,
-    topBar,
+    // topBar,
   }
 }
 </script>

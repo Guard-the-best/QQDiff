@@ -1,5 +1,6 @@
 <template>
   <div id="formWrapper">
+    <img src="~@/assets/img/login.jpg" id="background" width="100%" height="100% - 88px">
     <form action="/login" method="post"><!---->
       <div id="form">
         <div class="logo">
@@ -66,14 +67,6 @@ export default {
 </script>
 
 <style type="text/css">
-body {
-  background: url("'@/assets/img/login.jpg") no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  font-family: "HelveticaNeue", "Arial", sans-serif;
-}
 a {
   color: #58bff6;
   text-decoration: none;
@@ -102,12 +95,9 @@ div.logo {
   fill: #44aacc !important;
 }
 #formWrapper {
-  background: rgba(0, 0, 0, 0.2);
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  left: 0;
+  /* background: url('~@/assets/img/login.jpg');
+  background-size: 100% auto; */
+  font-family: "HelveticaNeue", "Arial", sans-serif;
   transition: all 0.3s ease;
 }
 .darken-bg {

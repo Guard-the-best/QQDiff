@@ -4,7 +4,7 @@
     
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="background-color:#24292e;">
       <div class="container">
-        <router-link class="navbar-brand js-scroll-trigger" to="/loginAndRegister">登陆/注册</router-link><!--href-->
+        <router-link class="navbar-brand js-scroll-trigger" to="/login">登陆/注册</router-link><!--href-->
         <button
           class="navbar-toggler navbar-toggler-right"
           type="button"
@@ -202,7 +202,6 @@
     <footer class="bg-black small text-center text-white-50">
       <div class="container">Copyright &copy; 2019 Dyp. All rights reserved.</div>
     </footer>
-    <router-view></router-view>
   </div>
 </template>
 
