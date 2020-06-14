@@ -9,6 +9,6 @@ export default new VueRouter({
     mode: 'history',
     routes:[
       {path: '/login', components: {default: loginPage}},
-      {path: '/', components: {default: welcome},props: (route) => ({ msg: route.query.msg })}
+      {path: '/', components: {default: welcome}}
     ]
   })
