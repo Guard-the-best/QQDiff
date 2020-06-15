@@ -206,18 +206,21 @@
 </template>
 
 <script>
+// global.jQuery = require('jquery');
 //Bootstrap core CSS
 import "bootstrap/dist/css/bootstrap.min.css";
 //Custom fonts for this template
 import "@fortawesome/fontawesome-free/css/all.min.css";
 //Custom styles for this template
-import "startbootstrap-grayscale/css/grayscale.css";
+// import "startbootstrap-grayscale/css/grayscale.css";
+// import "bootstrap";
 
+import "startbootstrap-grayscale/dist/css/styles.css";
 // Bootstrap core JavaScript
 // import "jquery/dist/jquery.min.js";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 // Plugin JavaScript
-// import "jquery.easing/jquery.easing.min.js";
+import "jquery-easing/jquery.easing.1.3.js";
 //Custom scripts for this template
 // import "startbootstrap-grayscale/js/grayscale.min.js";
 
@@ -231,6 +234,9 @@ export default {
     subscribe:function(){
       alert("not allowed");
     }
+  },
+  mounted() {
+    require("startbootstrap-grayscale/dist/js/scripts");
   }
 };
 
@@ -246,8 +252,6 @@ export default {
 //       }
 //   })
 // }
-
-
 
 
 </script>

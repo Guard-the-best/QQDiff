@@ -32,9 +32,15 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 + [组件](https://cn.vuejs.org/v2/guide/components.html)
 
 + [单文件组件](https://cn.vuejs.org/v2/guide/single-file-components.html)
+    + [~~在JavaScript使用单文件组建的props~~](https://www.cnblogs.com/FarmanKKK/p/9040252.html)
+        + [~~watch~~](https://cn.vuejs.org/v2/api/#watch)
+    + [改进的方案：使用$props对象](https://blog.csdn.net/viewyu12345/article/details/84031295)
 
 + [路由](https://router.vuejs.org/zh/guide/)
     +  **动态路由** 和 **嵌套路由** 可以帮助构建商品展示、用户信息方面的内容
+
++ [$props对象](https://cn.vuejs.org/v2/api/#vm-props)
+    + 能够用于改进父组件对子组件的传值
 
 ### 其他
 
