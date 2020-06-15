@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import "jquery/dist/jquery.min.js";
 export default {
     name:'inputItem',
     data:function(){

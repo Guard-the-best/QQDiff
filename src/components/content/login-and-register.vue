@@ -1,5 +1,6 @@
 <template>
   <div id="formWrapper">
+    <p id="formMask" v-bind:class="{'darken-bg':isDarker}"/>
     <img src="~@/assets/img/login.jpg" id="background" width="100%" heitht="100%">
     <form action="/login" method="post"><!---->
       <div id="form">
@@ -23,7 +24,6 @@
 </template>
 
 <script>
-import $ from "jquery/dist/jquery.min.js";
 import login from './login.vue';
 import register from './register.vue';
 
@@ -35,16 +35,15 @@ export default {
           title:'Log in',
           isLogin:true,
           isRegister:false,
+          isDarker:false,
       }
   },
   methods: {
     reactInputing: function(darker) {
       if (darker) {
-        $("div#formWrapper").addClass("darken-bg");
-        $("div.logo").addClass("logo-active");
+        this.isDarker=true
       } else {
-        $("div#formWrapper").removeClass("darken-bg");
-        $("div.logo").removeClass("logo-active");
+        this.isDarker=false
       }
     },
     swap:function(){
@@ -100,8 +99,14 @@ div.logo {
   font-family: "HelveticaNeue", "Arial", sans-serif;
   transition: all 0.3s ease;
 }
+#formMask{
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 100%;
+}
 .darken-bg {
-  background: rgba(0, 0, 0, 0.5) !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
   transition: all 0.3s ease;
 }
 div#form {
