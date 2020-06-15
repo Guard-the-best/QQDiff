@@ -64,7 +64,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 //Custom fonts for this template
 import "@fortawesome/fontawesome-free/css/all.min.css"
 //Custom styles for this template
-import "startbootstrap-grayscale/css/grayscale.css";
+// import "startbootstrap-grayscale/css/grayscale.css";
 
 // Bootstrap core JavaScript
 // import "jquery/dist/jquery.min.js";
