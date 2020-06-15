@@ -5,8 +5,8 @@
     <!-- <carousel/> -->
     <!-- <carousel/> -->
     <!-- <loginAndRegister loginErrorMsg=""/> -->
-    <!-- <router-view/> -->
-    <welcome/>
+    <router-view/>
+    <!-- <welcome/> -->
   </div>
 </template>
 
@@ -14,14 +14,14 @@
 // import topBar from './components/util/top-bar'
 // import products from './components/content/products'
 // import carousel from './components/content/carousel'
-import welcome from './components/welcome.vue';
+// import welcome from './components/welcome.vue';
 // import loginAndRegister from './components/content/login-and-register.vue';
 
 export default {
   name: 'App',
   components: {
     // carousel,
-    welcome,
+    // welcome,
     // login,
     // loginAndRegister,
     // products,

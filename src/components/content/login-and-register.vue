@@ -1,6 +1,6 @@
 <template>
   <div id="formWrapper">
-    <img src="~@/assets/img/login.jpg" id="background" width="100%" height="100% - 88px">
+    <img src="~@/assets/img/login.jpg" id="background" width="100%" heitht="100%">
     <form action="/login" method="post"><!---->
       <div id="form">
         <div class="logo">
@@ -116,7 +116,7 @@ div#form {
   left: 50%;
   top: 50%;
   margin-left: -180px;
-  margin-top: -300px;
+  margin-top: -200px;
 }
 div.form-item {
   position: relative;

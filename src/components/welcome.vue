@@ -2,7 +2,7 @@
   <div id="page-top">
     <!-- Navigation -->
     
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="background-color:#24292e;">
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
       <div class="container">
         <router-link class="navbar-brand js-scroll-trigger" to="/login">登陆/注册</router-link><!--href-->
         <button

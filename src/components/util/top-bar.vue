@@ -1,5 +1,6 @@
 <template>
-<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav" style="background-color:#24292e;">
+<div>
+<nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <a class="navbar-brand js-scroll-trigger" onclick="searchPage('/toCarousel')" href="javascript:void(0)">首页</a>
     <button class="navbar-toggler navbar-toggler-right"
             type="button" data-toggle="collapse"
@@ -56,6 +57,10 @@
             <!-- </li> -->
     </div>
 </nav> 
+<table class="table table-dark" border="" style="margin:0">
+    <tr><td scope="col" height="88px"/></tr>
+</table>
+</div>
 </template>
 
 <script>
@@ -71,7 +76,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css"
 // import "jqueryui/jquery-ui.min.js";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 // Plugin JavaScript
-// import "jquery.easing/jquery.easing.min.js";
+import "jquery-easing/jquery.easing.1.3.js";
 //Custom scripts for this template
 // import "startbootstrap-grayscale/js/grayscale.js";
 import util from '../../util.js'
@@ -99,6 +104,7 @@ export default {
         }
     },
     mounted(){
+        require("startbootstrap-grayscale/dist/js/scripts");
         util.myaxios.get("http://localhost:8080/goods/categories")
         .then(res =>{
             this.pets=res.data.data
