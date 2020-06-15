@@ -42,6 +42,9 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 + [$props对象](https://cn.vuejs.org/v2/api/#vm-props)
     + 能够用于改进父组件对子组件的传值
 
++ [$refs对象](https://cn.vuejs.org/v2/api/#vm-refs)
+    + 用于定位子组件以及DOM元素的位置，但获取的结果似乎并不是真正的DOM元素，有待研究
+
 ### 其他
 
 + [动态搜索](https://www.lodashjs.com/docs/lodash.debounce)
