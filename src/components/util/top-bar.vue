@@ -109,8 +109,6 @@ export default {
         .then(res =>{
             this.pets=res.data.data
         });
-        localStorage.setItem("token","eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTU5MjA1NTM1OCwiZXhwIjoxNTkyMTQxNzU4fQ.M_vbg8pq0WzI4KCIFMv-iEK2W8yh2hwFpgMNx7yw1vg")
-        localStorage.setItem("username","admin")
     }
 }
 

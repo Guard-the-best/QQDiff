@@ -2,13 +2,13 @@
   <div id="formWrapper">
     <p id="formMask" v-bind:class="{'darken-bg':isDarker}"/>
     <img src="~@/assets/img/login.jpg" id="background" width="100%" heitht="100%">
-    <form action="/login" method="post"><!---->
+    <form v-on:submit.prevent="post">
       <div id="form">
         <div class="logo">
           <h1 class="text-center head">User {{title}}</h1>
         </div>
-        <login v-show="isLogin" v-on:inputing="reactInputing"/>
-        <register v-show="isRegister" v-on:inputing="reactInputing"/>
+        <login v-show="isLogin" v-on:inputing="reactInputing" ref="login"/>
+        <register v-show="isRegister" v-on:inputing="reactInputing" ref="register"/>
         <div class="form-item">
           <p class="pull-left">
             <a v-on:click="swap" href="javascript:void(0)">
@@ -54,7 +54,15 @@ export default {
       var t2=this.isLogin;
       this.isLogin=this.isRegister;
       this.isRegister=t2;
-    }
+    },
+    post:function(){
+      if(this.isLogin){
+        this.$refs.login.login();
+      }
+      else{
+        this.$refs.register.register();
+      }
+    },
   },
   components: {
     login,

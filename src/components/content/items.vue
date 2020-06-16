@@ -83,6 +83,7 @@
               type="button"
               class="btn btn-success btn-sm"
               href="javascript:void(0)"
+              data-toggle="modal" data-target="#exampleModal"
             >Cart</button>
           </td>
         </tr>
@@ -127,11 +128,14 @@ export default {
 
   methods: {
         addToCart: function(itemId) {
-          this.$refs.msgbox.showUp();
+          // this.$refs.msgbox.showUp();
           util.myaxios
-            .patch("http://localhost:8080/cart/" + itemId)
+            .patch("http://localhost:8080/cart/" + itemId,{
+              "delta": 1,
+              "username": localStorage.getItem("username")
+            })
             .then(res => {
-              this.$refs.msgbox.showUp();
+              // this.$refs.msgbox.showUp();
               if (res == undefined) {
                 this.message = "连接失败，请检查连接并重试";
               }

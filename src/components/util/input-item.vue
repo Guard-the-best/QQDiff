@@ -1,14 +1,12 @@
 <template>
   <div class="form-item">
-    <p v-bind:for="id" class="formLabel" v-bind:class="{formTop:focused}">{{placeholder}}</p>
+    <p class="formLabel" v-bind:class="{formTop:(focused||value)}">{{placeholder}}</p>
 
     <input 
       v-on:focus="focus" 
       v-on:blur="blur" 
       v-bind:type="type" 
       v-bind:name="name" 
-      v-bind:id="id" 
-      v-bind:value="value" 
       v-on:input="$emit('input',$event.target.value)" 
       class="form-style"
     />
@@ -39,15 +37,18 @@ export default {
         'placeholder',
         'type',
         'name',
-        'id',
         'value'
-    ]
+    ],
+    model:{
+      prop:'value',
+      event:'input'
+    }
 }
 </script>
 
 <style>
 .formTop {
-  top: -22px !important;
+  top: -15px !important;
   left: 26px;
   background-color: #fff;
   padding: 0 5px;
