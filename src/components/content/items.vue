@@ -63,11 +63,11 @@
           </td>
           <td>
             <br />
-            {{ item.descp }}
+            {{ item.attributes }}
           </td>
           <td>
             <br />
-            {{ item.price }}
+            ${{ item.listPrice }}
           </td>
           <td>
             <button
@@ -83,13 +83,14 @@
               type="button"
               class="btn btn-success btn-sm"
               href="javascript:void(0)"
-              data-toggle="modal" data-target="#exampleModal"
+              data-toggle="modal"
+              data-target="#exampleModal"
             >Cart</button>
           </td>
         </tr>
       </tbody>
     </table>
-    <msgbox :msg="message" ref="msgbox"/>
+    <msgbox :msg="message" ref="msgbox" />
   </div>
 </template>
 
@@ -102,54 +103,53 @@ export default {
   name: "items",
   data: function() {
     return {
-      items: [
-        {
-          itemId: 10001,
-          productId: 1001,
-          descp: "good boy, happy, short tail",
-          price: "20.00"
-        },
-        {
-          itemId: 10002,
-          productId: 1001,
-          descp: "bad boy, angry, long tail",
-          price: "20.00"
-        },
-        {
-          itemId: 10003,
-          productId: 1001,
-          descp: "king, lonely, bold",
-          price: "30.00"
-        }
-      ],
+      items: [],
       message: "正在添加至购物车，请稍后。"
     };
   },
-
+  watch: {
+    // 如果路由有变化，会再次执行该方法
+    $route: "fetchData"
+  },
   methods: {
-        addToCart: function(itemId) {
+    fetchData: function() {
+      // 获取数据（items）
+      util.myaxios
+        .get(
+          "http://localhost:8080/goods/products/" +
+            this.$route.params.productName +
+            "/items"
+        )
+        .then(res => {
+          this.items = res.data.data;
+        });
+    },
+
+    addToCart: function(itemId) {
+      // this.$refs.msgbox.showUp();
+      util.myaxios
+        .patch("http://localhost:8080/cart/" + itemId, {
+          delta: 1,
+          username: localStorage.getItem("username")
+        })
+        .then(res => {
           // this.$refs.msgbox.showUp();
-          util.myaxios
-            .patch("http://localhost:8080/cart/" + itemId,{
-              "delta": 1,
-              "username": localStorage.getItem("username")
-            })
-            .then(res => {
-              // this.$refs.msgbox.showUp();
-              if (res == undefined) {
-                this.message = "连接失败，请检查连接并重试";
-              }
-              else if (res.status == 200) {
-                this.message = "添加成功";
-              } else {
-                this.message = "添加失败，Error:" + res.status;
-              }
-            });
-        }
-      },
+          if (res == undefined) {
+            this.message = "连接失败，请检查连接并重试";
+          } else if (res.status == 200) {
+            this.message = "添加成功";
+          } else {
+            this.message = "添加失败，Error:" + res.status;
+          }
+        });
+    }
+  },
 
   components: {
     msgbox
+  },
+  beforeMount() {
+    this.fetchData();
   }
 };
 </script>
