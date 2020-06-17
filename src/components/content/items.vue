@@ -12,46 +12,6 @@
         </tr>
       </thead>
       <tbody>
-        <!-- <c:forEach items="${itemList}" var="itemResult">
-        <tr class="card0" id="${itemResult.itemId}">
-          <th scope="row">
-            <br />
-            ${itemResult.itemId}
-          </th>
-          <td>
-            <br />
-            ${itemResult.productId}
-          </td>
-          <td>
-            <br />
-            <c:forEach items="${itemResult.attributes}" var="attribute" varStatus="status">
-              <c:if test="${attribute != null && status.index != 0}">,</c:if>
-              ${attribute}
-            </c:forEach>
-          </td>
-          <td>
-            <br />
-            $ ${itemResult.listPrice}
-          </td>
-          <td>
-            <button
-              type="button"
-              class="btn btn-info btn-sm"
-              onclick="searchPage2(${itemResult.itemId})"
-              href="javascript:void(0)"
-            >Buy</button>
-          </td>
-          <td>
-            <button
-              onclick="checkAnimal2(${itemResult.itemId})"
-              type="button"
-              class="btn btn-success btn-sm"
-              data-toggle="modal"
-              data-target="#exampleModal"
-            >Cart</button>
-          </td>
-        </tr>
-        </c:forEach>-->
         <tr v-for="item in items" :key="item.itemId" class="card0" :id="item.itemId">
           <th scope="row">
             <br />
@@ -83,8 +43,6 @@
               type="button"
               class="btn btn-success btn-sm"
               href="javascript:void(0)"
-              data-toggle="modal"
-              data-target="#exampleModal"
             >Cart</button>
           </td>
         </tr>
@@ -138,8 +96,10 @@ export default {
             this.message = "连接失败，请检查连接并重试";
           } else if (res.status == 200) {
             this.message = "添加成功";
+            this.$refs.msgbox.showUp();
           } else {
-            this.message = "添加失败，Error:" + res.status;
+            this.message = "添加失败，错误:" + res.status;
+            this.$refs.msgbox.showUp();
           }
         });
     }

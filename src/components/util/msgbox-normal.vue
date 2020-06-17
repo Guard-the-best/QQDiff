@@ -29,17 +29,17 @@
 
 <script>
 import "bootstrap";
-// import $ from "jquery"
+import $ from "jquery"
 
 export default {
   name: "msgboxNormal",
   props: ["msg"],
   methods: {
-    // showUp: function() {
-    // //   this.$refs.thisModal.modal("toggle");
-    // // FIXME:这里似乎无法使用refs获取子组件的DOM元素，也可能是我的问题，总之还是使用了jQuery，不太好
-    // $("#exampleModal").modal("toggle")
-    // }
+    showUp: function() {
+    //   this.$refs.thisModal.modal("toggle");
+    // FIXME:这里似乎无法使用refs获取子组件的DOM元素，也可能是我的问题，总之还是使用了jQuery，不太好
+    $("#exampleModal").modal("show")
+    }
   },
   data: function() {
     return {};
