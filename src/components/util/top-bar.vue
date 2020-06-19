@@ -138,7 +138,7 @@
 </template>
 
 <script>
-//Bootstrap core CSS
+//Bootstrap core css
 import "bootstrap/dist/css/bootstrap.min.css";
 //Custom fonts for this template
 import "@fortawesome/fontawesome-free/css/all.min.css";
