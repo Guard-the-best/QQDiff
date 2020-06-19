@@ -25,33 +25,6 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <!-- <c:forEach items="${lineItems}" var="itemCart">
-                                <tr>
-                                    <th scope="row">
-                                        <div class="p-2">
-                                            <img src="static/img/carousel3.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
-                                            <div class="ml-3 d-inline-block align-middle">
-                                                <h5 class="mb-0"><a onclick="checkAnimal(${itemCart.itemId})" href="javascript:void(0)" class="text-dark d-inline-block">${itemCart.productName}</a></h5><span class="text-muted font-weight-normal font-italic">${itemCart.categoryName}</span>
-                                            </div>
-                                        </div>
-                                    </th>
-                                    <td class="align-middle"><strong><c:out value="${itemCart.price}" /></strong></td>
-                                    <td class="align-middle" ><strong>
-                                        <br />
-                                        <div class="input-group mb-3">
-                                            <input id="1" onblur="checkNum()" name="${itemCart.itemId}" type="text" style="width:50%;" value="${itemCart.quantity}">
-                                            &nbsp;&nbsp;&nbsp;&nbsp;
-                                            <button onclick="addQuantity()">
-                                                <i class="fas fa-plus"></i>
-                                            </button>
-
-                                        </div>
-                                    </strong></td>
-                                    <td class="align-middle"><a onclick="del(${itemCart.itemId})" href="javascript:void(0)" class="text-dark">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-trash"></i></a>
-                                    </td>
-                                </tr>
-                    </c:forEach>-->
-
                     <tr v-for="cartItem in cartItems" :key="cartItem.itemId">
                       <th scope="row">
                         <div class="p-2">
@@ -157,7 +130,7 @@
                 </li>
               </ul>
               <a
-                onclick="findPage('toProductInfo')"
+                @click="makeOrder()"
                 href="javascript:void(0)"
                 class="btn btn-dark rounded-pill py-2 btn-block"
               >Procceed to checkout</a>
@@ -172,6 +145,7 @@
 <script>
 import "bootstrap";
 import util from "../../util";
+import router from "../../router";
 
 export default {
   data: function() {
@@ -217,14 +191,24 @@ export default {
         console.info("Not going to add", itemId, "to cart");
       }
     },
-    makeOrder: function() {},
-    fetchData: function() {
-      util.myaxios.get(
-        "http://localhost:8080/cart?username=" +
-          localStorage.getItem("username")
-      ).then(res => {
-        this.cartItems = res.data.data;
+    makeOrder: function() {
+      router.push({
+        path: "/checkout",
+        name: "checkout",
+        params: {
+          items: this.cartItems
+        }
       });
+    },
+    fetchData: function() {
+      util.myaxios
+        .get(
+          "http://localhost:8080/cart?username=" +
+            localStorage.getItem("username")
+        )
+        .then(res => {
+          this.cartItems = res.data.data;
+        });
     }
   },
   computed: {

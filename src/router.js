@@ -8,6 +8,8 @@ import carousel from './components/content/carousel.vue'
 import products from './components/content/products.vue'
 import items from './components/content/items'
 import cart from './components/content/cart'
+import checkout from './components/content/checkout'
+import personalInfo from './components/content/personalInfo'
 
 Vue.use(VueRouter)
 
@@ -21,7 +23,9 @@ export default new VueRouter({
         { path: '', components: { default: carousel } },
         { path: '/goods/categories/:categoryName/products', components: { default: products } },
         { path: '/goods/products/:productName/items', components: { default: items } },
-        { path: '/cart', components: { default: cart } }
+        { path: '/cart', components: { default: cart } },
+        { path: '/checkout', name: 'checkout', components: { default: checkout } },
+        { path: '/user/info', components: { default: personalInfo } }
       ]
     }
   ]
