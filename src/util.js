@@ -4,12 +4,20 @@ import router from './router'
 let util={}
 
 util.myaxios = axios.create({
-    headers: {
-      'Content-Type': 'application/json;charset=utf-8',
-      Authorization: (localStorage.getItem("token") != null && localStorage.getItem("token").length>0) ? ('Bearer '+localStorage.getItem('token')) : "",
-    },
-    // withCredentials: true,
-  })
+  headers: {
+    'Content-Type': 'application/json;charset=utf-8',
+    Authorization: (localStorage.getItem("token") != null && localStorage.getItem("token").length>0) ? ('Bearer '+localStorage.getItem('token')) : "",
+  },
+  // withCredentials: true,
+})
+
+util.noaxios = axios.create({
+  headers: {
+    'Content-Type': 'application/json;charset=utf-8',
+    Authorization: (localStorage.getItem("token") != null && localStorage.getItem("token").length>0) ? ('Bearer '+localStorage.getItem('token')) : "",
+  },
+  // withCredentials: true,
+})
 
   util.myaxios.interceptors.response.use(
     response => {

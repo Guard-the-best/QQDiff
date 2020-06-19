@@ -5,8 +5,10 @@
     <input 
       v-on:focus="focus" 
       v-on:blur="blur" 
-      v-bind:type="type" 
-      v-bind:name="name" 
+      v-bind:id="myid"
+      v-bind:type="mytype" 
+      v-bind:name="myname" 
+      v-bind:style="mystyle"
       v-on:input="$emit('input',$event.target.value)" 
       class="form-style"
     />
@@ -35,8 +37,10 @@ export default {
     },
     props:[
         'placeholder',
-        'type',
-        'name',
+        'myid',
+        'mytype',
+        'myname',
+        'mystyle',
         'value'
     ],
     model:{

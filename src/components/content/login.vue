@@ -1,8 +1,8 @@
 <template>
   <div>
     <inputItem
-      type="text"
-      name="email"
+      mytype="text"
+      myname="email"
       placeholder="UserID..."
       v-on:inputing="reactInputing"
       v-model="email"
@@ -13,8 +13,8 @@
       </div> -->
     </inputItem>
     <inputItem
-      type="password"
-      name="password"
+      mytype="password"
+      myname="password"
       placeholder="Password..."
       v-on:inputing="reactInputing"
       v-model="password"
@@ -27,16 +27,22 @@
       </p>
     </inputItem>
     <inputItem
-      type="text"
-      name="captchaCode"
-      placeholder="Verification"
+      myid="myCaptchaUserInput"
+      mytype="text"
+      myname="captchaCode"
+      placeholder="Verification..."
       v-on:inputing="reactInputing"
       v-model="captchaCode"
-      style="width: 60%;"
-    ></inputItem>
+    >
+    </inputItem>
+    <div id="botdetect-captcha" data-captchastylename="myCaptchaStyle" class="form-item"></div>
   </div>
 </template>
 <script>
+import $ from 'jquery'
+import 'jquery'
+import 'jquery-captcha'
+
 import util from '../../util'
 import router from '../../router'
 
@@ -50,8 +56,16 @@ export default {
     return{
       email:'',
       password:'',
-      captchaCode:''
+      captchaCode:'',
+
+      captcha:'',
     }
+  },
+  mounted(){
+    this.captcha=$('#botdetect-captcha').captcha({
+    captchaEndpoint: 
+      'http://localhost:8080/captcha-endpoint'
+  });
   },
   methods: {
     reactInputing: function(darker) {
@@ -64,18 +78,29 @@ export default {
       else if(this.password == ""){
         alert("密码不能为空")
       }
-      // else if(this.captchaCode == null){
-      //   alert("验证码不能为空")
-      // }
+      else if(this.captchaCode == null){
+        alert("验证码不能为空")
+      }
       else{
         var vm = this
-        util.myaxios.post('http://localhost:8080/user/login',{
+        util.noaxios.post('http://localhost:8080/user/login',{
           username: vm.email,
-          password: vm.password
+          password: vm.password,
+          captchaCode:vm.captcha.getUserEnteredCaptchaCode(),
+          captchaId:vm.captcha.getCaptchaId()
         }).then(res=>{
           localStorage.setItem("username",vm.email)
           localStorage.setItem("token",res.data.data)
           router.push('/home')
+        }).catch(error=>{
+          if(error.response.status == 401){
+            alert(error.response.data.message)
+            this.captcha.reloadImage()
+          }
+          else{
+            this.captcha.reloadImage()
+            alert(error.response.data.message)
+          }
         })
       }
     }

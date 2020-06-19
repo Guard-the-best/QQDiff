@@ -1,8 +1,8 @@
 <template>
   <div>
     <inputItem
-      type="text"
-      name="registerID"
+      mytype="text"
+      myname="registerID"
       placeholder="UserID..."
       v-on:inputing="reactInputing"
       v-model="username"
@@ -13,8 +13,8 @@
     </inputItem>
 
     <inputItem
-      type="text"
-      name="nickname"
+      mytype="text"
+      myname="nickname"
       placeholder="NickName.."
       v-on:inputing="reactInputing"
       v-model="nickname"
@@ -22,8 +22,8 @@
     </inputItem>
 
     <inputItem
-      type="text"
-      name="phoneNumber"
+      mytype="text"
+      myname="phoneNumber"
       placeholder="PhoneNumber..."
       v-on:inputing="reactInputing"
       v-model="phoneNumber"
@@ -31,8 +31,8 @@
     </inputItem>
 
     <inputItem
-      type="password"
-      name="registerPassword"
+      mytype="password"
+      myname="registerPassword"
       placeholder="Password..."
       v-on:inputing="reactInputing"
       v-model="password"
@@ -40,8 +40,8 @@
       <!-- <div class="pw-view"><i claStatusss="fa fa-eye"></i></div> -->
     </inputItem>
     <inputItem
-      type="password"
-      name="confirmPassword"
+      mytype="password"
+      myname="confirmPassword"
       placeholder="ConfirmPassword..."
       v-on:inputing="reactInputing"
       v-model="password2"

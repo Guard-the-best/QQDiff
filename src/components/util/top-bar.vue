@@ -138,7 +138,7 @@
 </template>
 
 <script>
-//Bootstrap core CSS
+//Bootstrap core css
 import "bootstrap/dist/css/bootstrap.min.css";
 //Custom fonts for this template
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -189,7 +189,7 @@ export default {
     util.myaxios.get("http://localhost:8080/goods/categories").then(res => {
       this.pets = res.data.data;
     });
-    this.updateLength();
+    // this.updateLength();
   }
 };
 </script>

@@ -33,8 +33,8 @@
       </div>
     </nav>
 
-    <!-- Header -->
-    <header class="masthead">
+    <!-- Header url("../assets/img/bg-masthead.jpg"); -->
+    <header class="hdl">
       <div class="container d-flex h-100 align-items-center">
         <div class="mx-auto text-center">
           <h1 class="mx-auto my-0 text-uppercase">JPETSTORE</h1>
@@ -205,9 +205,15 @@
   </div>
 </template>
 
+<style scoped>
+
+  @import "../assets/css/rigth_bg.css";
+
+</style>
+
 <script>
 // global.jQuery = require('jquery');
-//Bootstrap core CSS
+//Bootstrap core css
 import "bootstrap/dist/css/bootstrap.min.css";
 //Custom fonts for this template
 import "@fortawesome/fontawesome-free/css/all.min.css";
