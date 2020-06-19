@@ -189,7 +189,7 @@ export default {
     util.myaxios.get("http://localhost:8080/goods/categories").then(res => {
       this.pets = res.data.data;
     });
-    this.updateLength();
+    // this.updateLength();
   }
 };
 </script>
