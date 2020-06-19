@@ -35,9 +35,7 @@ export default {
   data: function() {
     return {
       categoryName: "dog",
-      products: [
-        
-      ]
+      products: []
     };
   },
   watch: {

@@ -103,7 +103,7 @@
                       </td>
                       <td class="align-middle">
                         <a
-                          onclick="del(${itemCart.itemId})"
+                          @click="function(){foreQuantity = cartItem.quantity; updateQuantity(cartItem.itemId, 0)}"
                           href="javascript:void(0)"
                           class="text-dark"
                         >
@@ -179,23 +179,23 @@ export default {
       cartItems: [
         {
           itemId: 10001,
-          productName: 'Golden Retriever',
-          listPrice: 20.00,
-          attributes: 'good boy, happy, short tail',
+          productName: "Golden Retriever",
+          listPrice: 20.0,
+          attributes: "good boy, happy, short tail",
           quantity: 2
         },
         {
           itemId: 10011,
-          productName: 'Labrador Retriever',
-          listPrice: 50.00,
-          attributes: 'funk, angry, crazy',
+          productName: "Labrador Retriever",
+          listPrice: 50.0,
+          attributes: "funk, angry, crazy",
           quantity: 1
         },
         {
           itemId: 10003,
-          productName: 'Golden Retriever',
-          listPrice: 20.00,
-          attributes: 'king, lonely, bold',
+          productName: "Golden Retriever",
+          listPrice: 20.0,
+          attributes: "king, lonely, bold",
           quantity: 1
         }
       ]
@@ -206,22 +206,39 @@ export default {
       this.foreQuantity = quantity;
     },
     updateQuantity: function(itemId, curQuantity) {
-      util.myaxios.patch("http://localhost:8080/cart/" + itemId, {
-        delte: (curQuantity-this.foreQuantity),
-        "username": localStorage.getItem("username")
-      });
-      console.log(itemId, (curQuantity-this.foreQuantity));
+      var theDelta = curQuantity - this.foreQuantity;
+      if (theDelta) {
+        console.info("[Patch] Adding ", theDelta, itemId, "to cart.");
+        util.myaxios.patch("http://localhost:8080/cart/" + itemId, {
+          delta: theDelta,
+          username: localStorage.getItem("username")
+        });
+      } else {
+        console.info("Not going to add", itemId, "to cart");
+      }
     },
-    makeOrder: function() {}
+    makeOrder: function() {},
+    fetchData: function() {
+      util.myaxios.get(
+        "http://localhost:8080/cart?username=" +
+          localStorage.getItem("username")
+      ).then(res => {
+        this.cartItems = res.data.data;
+      });
+    }
   },
   computed: {
-    totalPrice: function() { // 计算属性
+    totalPrice: function() {
+      // 计算属性
       var total = 0;
       for (var cartItem of this.cartItems) {
-        total += cartItem.quantity*cartItem.listPrice;
+        total += cartItem.quantity * cartItem.listPrice;
       }
       return total;
     }
+  },
+  beforeMount() {
+    this.fetchData();
   }
 };
 </script>

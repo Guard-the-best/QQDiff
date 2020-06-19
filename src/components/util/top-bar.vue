@@ -1,11 +1,12 @@
 <template>
   <div>
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
-      <a
+      <!-- <a
         class="navbar-brand js-scroll-trigger"
         onclick="searchPage('/toCarousel')"
         href="javascript:void(0)"
-      >首页</a>
+      >首页</a>-->
+      <router-link class="navbar-brand js-scroll-trigger" to="/home">首页</router-link>
       <button
         class="navbar-toggler navbar-toggler-right"
         type="button"
@@ -49,14 +50,14 @@
             </a>
             <ul class="dropdown-menu">
               <li>
-                <a class="dropdown-item" onclick="searchPage('/toCart')" href="javascript:void(0)">
+                <router-link class="dropdown-item" to="/cart">
                   购物车 &nbsp;
                   <span
                     id="cartLen"
                     class="badge badge-secondary"
                     v-on:click="updateLength()"
                   >{{cartLength}}</span>
-                </a>
+                </router-link>
               </li>
               <li>
                 <a
@@ -147,7 +148,7 @@ import "@fortawesome/fontawesome-free/css/all.min.css";
 // Bootstrap core JavaScript
 // import "jquery/dist/jquery.min.js";
 // import "jqueryui/jquery-ui.min.js";
-import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "bootstrap";
 // Plugin JavaScript
 import "jquery-easing/jquery.easing.1.3.js";
 //Custom scripts for this template
@@ -159,35 +160,36 @@ export default {
   data() {
     return {
       pets: null,
-      cartLength: 0,
-      getProductsByCategory(category) {
-        console.log(category);
-        util.myaxios
-          .get(
-            "http://localhost:8080/goods/categories/" + category + "/products"
-          )
-          .then(res => {
-            console.log(res.data.data);
-            //route
-          });
-      },
-      updateLength() {
-        util.myaxios
-          .get(
-            "http://localhost:8080/cart?username=" +
-              localStorage.getItem("username")
-          )
-          .then(res => {
-            this.cartLength = res.data.data.length;
-          });
-      }
+      cartLength: 0
     };
+  },
+  methods: {
+    getProductsByCategory: function(category) {
+      console.log(category);
+      util.myaxios
+        .get("http://localhost:8080/goods/categories/" + category + "/products")
+        .then(res => {
+          console.log(res.data.data);
+          //route
+        });
+    },
+    updateLength: function() {
+      util.myaxios
+        .get(
+          "http://localhost:8080/cart?username=" +
+            localStorage.getItem("username")
+        )
+        .then(res => {
+          this.cartLength = res.data.data.length;
+        });
+    }
   },
   mounted() {
     require("startbootstrap-grayscale/dist/js/scripts");
     util.myaxios.get("http://localhost:8080/goods/categories").then(res => {
       this.pets = res.data.data;
     });
+    this.updateLength();
   }
 };
 </script>

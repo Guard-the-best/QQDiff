@@ -1,0 +1,67 @@
+<template>
+    
+
+  <div class="row">
+    <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+      <!-- Shopping cart table -->
+      <div class="table-responsive">
+        <form id="addQ" action="javascript:void (0)" method="post">
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col" class="border-0 bg-light">
+                  <div class="p-2 px-3 text-uppercase">Product</div>
+                </th>
+                <th scope="col" class="border-0 bg-light">
+                  <div class="py-2 text-uppercase">Price</div>
+                </th>
+                <th scope="col" class="border-0 bg-light">
+                  <div class="py-2 text-uppercase">Quantity</div>
+                </th>
+                <th scope="col" class="border-0 bg-light">
+                  <div class="py-2 text-uppercase">Remove</div>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- <c:forEach items="${lineItems}" var="itemCart">
+                                <tr>
+                                    <th scope="row">
+                                        <div class="p-2">
+                                            <img src="static/img/carousel3.jpg" alt="" width="70" class="img-fluid rounded shadow-sm">
+                                            <div class="ml-3 d-inline-block align-middle">
+                                                <h5 class="mb-0"><a onclick="checkAnimal(${itemCart.itemId})" href="javascript:void(0)" class="text-dark d-inline-block">${itemCart.productName}</a></h5><span class="text-muted font-weight-normal font-italic">${itemCart.categoryName}</span>
+                                            </div>
+                                        </div>
+                                    </th>
+                                    <td class="align-middle"><strong><c:out value="${itemCart.price}" /></strong></td>
+                                    <td class="align-middle" ><strong>
+                                        <br />
+                                        <div class="input-group mb-3">
+                                            <input id="1" onblur="checkNum()" id="${itemCart.itemId}" name="${itemCart.itemId}" type="text" style="width:50%;" value="${itemCart.quantity}">
+                                            &nbsp&nbsp&nbsp&nbsp
+                                            <button onclick="addQuantity()">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+
+                                        </div>
+                                    </strong></td>
+                                    <td class="align-middle"><a onclick="del(${itemCart.itemId})" href="javascript:void(0)" class="text-dark">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+              </c:forEach>-->
+            </tbody>
+          </table>
+        </form>
+      </div>
+      <!-- End -->
+    </div>
+  </div>
+</template>
+
+<script>
+export default {};
+</script>
+
+<style>
+</style>

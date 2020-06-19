@@ -55,6 +55,7 @@
 <script>
 import msgbox from "../util/msgbox-normal";
 import util from "../../util";
+import "../util/top-bar"
 // TODO:设置函数 1.加入购物车 2.直接下单
 //
 export default {
