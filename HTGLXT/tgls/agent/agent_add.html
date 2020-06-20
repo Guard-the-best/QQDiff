@@ -15,14 +15,13 @@
 		<meta name="description" content="网站简介" />
 		<!-- 网站简介 -->
 		<meta name="keywords" content="搜索关键字，以半角英文逗号隔开" />
-		<title>穷在闹市出品</title>
+		<title>JpetStore后台管理系统-添加用户</title>
 
 		<!-- 公共样式 开始 -->
 		<link rel="stylesheet" type="text/css" href="../../../src/assets/css/base.css">
 		<link rel="stylesheet" type="text/css" href="../../../src/assets/css/iconfont.css">
 		<script type="text/javascript" src="../../../src/assets/js/jquery-1.11.3.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="../../../src/assets/css/layui.css">
-		<script type="text/javascript" src="../../layui/layui.js"></script>
 		<!-- 滚动条插件 -->
 		<link rel="stylesheet" type="text/css" href="../../../src/assets/css/jquery.mCustomScrollbar.css">
 		<script src="../../../src/assets/js/jquery-ui-1.10.4.min.js"></script>
@@ -40,124 +39,97 @@
 	</head>
 
 	<body>
-		<div class="cBody">
+		<div class="cBody" style="width: 1000px;height: 1000px;">
 			<form id="addForm" class="layui-form" action="">
 				<div class="layui-form-item">
-					<label class="layui-form-label">代理商名称</label>
+					<label class="layui-form-label">用户ID</label>
 					<div class="layui-input-block">
-						<input type="text" name="title" required lay-verify="required|ZHCheck" placeholder="例:穷在闹市出品(只允许输入中文)" autocomplete="off" class="layui-input">
+						<input v-model="addUser.userId" type="text" name="userId" placeholder="输入用户ID…" autocomplete="off" class="layui-input">
 					</div>
 				</div>
 				<div class="layui-form-item">
-					<label class="layui-form-label">地区</label>
+					<label class="layui-form-label">用户名</label>
 	                <div class="layui-input-inline">
-	                    <select name="provid" id="provid" lay-filter="provid">
-	                    </select>
+						<input v-model="addUser.username" type="text" name="username" placeholder="输入用户名…" autocomplete="off" class="layui-input">
 	                </div>
-	                <div class="layui-input-inline">
-	                    <select name="cityid" id="cityid" lay-filter="cityid">
-	                        <option value="">请选择市</option>
-	                    </select>
-	                </div>
+
 				</div>
 				<div class="layui-form-item">
-					<label class="layui-form-label">负责人</label>
-					<div class="layui-input-inline shortInput">
-						<input type="text" name="realName" required lay-verify="required|ZHCheck" placeholder="例:张三(只允许输入中文)" autocomplete="off" class="layui-input">
+					<label class="layui-form-label">密码</label>
+					<div class="layui-input-inline">
+						<input v-model="addUser.password" type="text" name="password" placeholder="输入密码…" autocomplete="off" class="layui-input">
 					</div>
+
 				</div>
-				<div class="layui-form-item">
-					<label class="layui-form-label">登录名</label>
-					<div class="layui-input-block">
-						<input type="text" name="loginName" required lay-verify="required|ZHCheck" placeholder="例:穷在闹市出品(只允许输入中文)" autocomplete="off" class="layui-input">
-					</div>
-				</div>
-				<div class="layui-form-item">
-					<label class="layui-form-label">登录密码</label>
-					<div class="layui-input-inline shortInput">
-						<input type="password" name="password" autocomplete="off" class="layui-input">
-					</div>
-				</div>
+
 				<div class="layui-form-item">
 					<label class="layui-form-label">确认密码</label>
 					<div class="layui-input-inline shortInput">
-						<input type="password" name="password2" autocomplete="off" class="layui-input">
+						<input  v-model="addUser.password2" type="password" name="password2" autocomplete="off" class="layui-input">
 					</div>
 				</div>
 				<div class="layui-form-item">
 					<label class="layui-form-label">电话</label>
 					<div class="layui-input-inline shortInput">
-						<input type="text" name="phone" required lay-verify="required|phone" placeholder="例：13000000000" autocomplete="off" class="layui-input">
+						<input v-model="addUser.phoneNumber" type="text" name="phoneNumber" required lay-verify="required|phone" placeholder="例：13000000000" autocomplete="off" class="layui-input">
 					</div>
 				</div>
+
 				<div class="layui-form-item">
-					<label class="layui-form-label">身份证号</label>
+					<label class="layui-form-label">昵称</label>
 					<div class="layui-input-inline shortInput">
-						<input type="text" name="identity" required lay-verify="required|identity" autocomplete="off" class="layui-input">
+						<input v-model="addUser.nickname" type="text" name="title" autocomplete="off" class="layui-input">
 					</div>
 				</div>
-				<div class="layui-form-item">
-					<label class="layui-form-label">传真</label>
-					<div class="layui-input-inline shortInput">
-						<input type="text" name="title" autocomplete="off" class="layui-input">
-					</div>
-				</div>
-				<div class="layui-form-item">
-					<label class="layui-form-label">邮箱</label>
-					<div class="layui-input-inline shortInput">
-						<input type="text" name="title" autocomplete="off" class="layui-input">
-					</div>
-				</div>
-				<div class="layui-form-item layui-form-text">
-					<label class="layui-form-label">备注</label>
-					<div class="layui-input-block">
-						<textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
-					</div>
-				</div>
-				<div class="layui-form-item">
-					<label class="layui-form-label">是否开通</label>
-					<div class="layui-input-block">
-						<input type="radio" name="sex" value="nan" title="启用" checked>
-						<input type="radio" name="sex" value="nv" title="禁用">
-					</div>
-				</div>
+
 				
 				<div class="layui-form-item">
 					<div class="layui-input-block">
-						<button class="layui-btn" lay-submit lay-filter="submitBut">立即提交</button>
-						<button type="reset" class="layui-btn layui-btn-primary">重置</button>
+						<button @click="addUserSubmit()" class="layui-btn" >立即提交</button>
+						<button @click="clear()" type="reset" class="layui-btn layui-btn-primary">重置</button>
 					</div>
 				</div>
 			</form>
 			
 			<!-- 三级省市 插件 -->
-    		<script src="../../framework/area.js"></script>
-			<script src="../../res/layui/province.js"></script>
 			<script>
-				layui.use('form', function() {
-					var form = layui.form;
-					//监听提交
-					form.on('submit(submitBut)', function(data) {
-						layer.msg(JSON.stringify(data.field));
-						return false;
-					});
-					form.verify({
-						//数组的两个值分别代表：[正则匹配、匹配不符时的提示文字]
-					  	ZHCheck: [
-						    /^[\u0391-\uFFE5]+$/
-						    ,'只允许输入中文'
-					  	] 
-					});
+
+			</script>
+
+			<script>
+				var app = new Vue({
+					el: '#addForm',
+					data:function () {
+							return{
+								addUser:{
+									userId:"",
+									username:"",
+									password:"",
+									password2:"",
+									phoneNumber:"",
+									nickname:""
+								}
+							}
+						},
+					methods:{
+						addUserSubmit:function () {
+							var newUser ={};
+							for(var key in this.addUser){
+								if(key!=='password2'){
+									newUser[key] = this.addUser[key];
+								}
+							}
+							//再将结果返回后端
+
+						},
+						clear:function () {
+							for(var key in this.addUser){
+								this.addUser[key] = '';
+								}
+						}
+					}
+
 				});
-				//默认城市为：宁夏 - 银川
-		        var defaults = {
-		            s1: 'provid',
-		            s2: 'cityid',
-		            s3: 'areaid',
-		            v1: 640000,
-		            v2: 640100,
-		            v3: null
-		        };
 			</script>
 
 		</div>
