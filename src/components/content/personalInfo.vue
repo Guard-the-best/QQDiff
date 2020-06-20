@@ -1,7 +1,7 @@
 <template>
   <div>
     <msgbox ref="msgbox" :msg="message" />
-    <addMsgbox ref="addMsgbox" :sAddress="address" />
+    <addMsgbox ref="addMsgbox" :address="address" @submitAdd="toSubmitAdd" />
     <div class="pb-5">
       <div class="container">
         <div class="row">
@@ -36,7 +36,7 @@
                   <td class="align-middle">{{ address.detailedAddress }}</td>
                   <td lass="align-middle">{{ address.phoneNumber }}</td>
                   <td lass="align-middle">
-                    <a href="javascript:void(0)">修改</a>
+                    <a href="javascript:void(0)" @click="toShowAdd">修改</a>
                   </td>
                 </tr>
                 <tr>
@@ -44,7 +44,7 @@
                     <button
                       type="button"
                       class="btn btn-info btn-sm"
-                      v-on:click="toShowAdd()"
+                      v-on:click="toShowAdd"
                       href="javascript:void(0)"
                       v-show="emptyAdd"
                     >添加一个新的地址</button>
@@ -77,23 +77,23 @@
 import "bootstrap";
 import "startbootstrap-grayscale/dist/css/styles.css";
 
-// import msgbox from "../util/msgbox-normal"
-import addMsgbox from "../util/addMsgbox"
+import msgbox from "../util/msgbox-normal";
+import addMsgbox from "../util/addMsgbox";
 
 import util from "../../util";
 export default {
   data: function() {
     return {
       address: {
-        name: "nameless",
-        phoneNumber: "10080",
-        province: "广Door",
-        city: "广州",
-        county: "天河",
-        village: "五山街道",
-        detailedAddress: "五山路0号广州市第四十七中学"
+        name: "",
+        phoneNumber: "",
+        province: "",
+        city: "",
+        county: "",
+        village: "",
+        detailedAddress: ""
       },
-      message: "正在添加",
+      message: "正在修改",
       emptyAdd: false
     };
   },
@@ -108,20 +108,43 @@ export default {
           console.log(res);
           if (res.data.data == null) {
             this.emptyAdd = true;
-            this.address = {};
+            // this.address = {
+            //   name: "",
+            //   phoneNumber: "",
+            //   province: "",
+            //   city: "",
+            //   county: "",
+            //   village: "",
+            //   detailedAddress: ""
+            // };
           } else {
-            this.address = res.data.data.address;
+            this.address = res.data.data;
             this.emptyAdd = false;
           }
         });
     },
     toShowAdd: function() {
-        this.$refs.addMsgbox.showUp();
+      this.$refs.addMsgbox.showUp();
+    },
+    toSubmitAdd: function(add) {
+      console.log(add);
+      this.address = add
+      util.myaxios
+        .patch("http://localhost:8080/user/address", {
+          username: localStorage.getItem("username"),
+          address: add
+        })
+        .then(res => {
+          if (res.status == 200) {
+            this.message = "修改成功";
+            this.$refs.msgbox.showUp();
+          }
+        });
     }
   },
   components: {
-      addMsgbox,
-    //   msgbox
+    addMsgbox,
+    msgbox
   },
   mounted() {
     this.fetchAdd();

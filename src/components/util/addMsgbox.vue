@@ -59,27 +59,20 @@
           <form>
             <div class="form-group">
               <label for="name" class="col-form-label">收货人姓名</label>
-              <input type="text" class="form-control" id="name" :value="address.name" />
+              <input type="text" class="form-control" id="name" :value="address.name" ref="name" />
               <label for="province" class="col-form-label">省</label>
-              <input type="text" id="province" class="form-control" :value="address.province" />
+              <input type="text" id="province" class="form-control" :value="address.province" ref="province" />
               <label for="city" class="col-form-label">市</label>
-              <input type="text" id="city" class="form-control" :value="address.city" />
+              <input type="text" id="city" class="form-control" :value="address.city" ref="city" />
               <label for="county" class="col-form-label">区</label>
-              <input type="text" id="county" class="form-control" :value="address.county" />
-              <p>{{address.county}}</p>
+              <input type="text" id="county" class="form-control" :value="address.county" ref="county" />
               <label for="village" class="col-form-label">街道</label>
-              <input type="text" id="village" class="form-control" :value="address.village" />
+              <input type="text" id="village" class="form-control" :value="address.village" ref="village" />
               <label for="detailAdd" class="col-form-label">详细地址</label>
-              <textarea
-                id="detailAdd"
-                cols="30"
-                rows="3"
-                class="form-control"
-                :v-model="address.detailedAddress"
-              ></textarea>
+              <input type="text" id="village" class="form-control" :value="address.detailedAddress" ref="detailedAddress" />
               <p>{{address.detailedAddress}}</p>
               <label for="phoneNum" class="col-form-label">电话</label>
-              <input type="text" id="phoneNum" class="form-control" :value="address.phoneNumber" />
+              <input type="text" id="phoneNum" class="form-control" :value="address.phoneNumber" ref="phoneNumber" />
             </div>
             <!-- <div class="form-group">
             <label for="message-text" class="col-form-label">Message:</label>
@@ -88,8 +81,8 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Send message</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" @click="addSubmit">保存修改</button>
         </div>
       </div>
     </div>
@@ -102,18 +95,18 @@ import $ from "jquery";
 
 export default {
   name: "addMsgbox",
-  props: ["sAddress"],
+  props: ["address"],
   data: function() {
     return {
-      address: {
-        name: "",
-        phoneNumber: "",
-        province: "",
-        city: "",
-        county: "",
-        village: "",
-        detailedAddress: ""
-      }
+      // address: {
+      //   name: "",
+      //   phoneNumber: "",
+      //   province: "",
+      //   city: "",
+      //   county: "",
+      //   village: "",
+      //   detailedAddress: ""
+      // }
     };
   },
   methods: {
@@ -121,16 +114,26 @@ export default {
       //   this.$refs.thisModal.modal("toggle");
       // FIXME:这里似乎无法使用refs获取子组件的DOM元素，也可能是我的问题，总之还是使用了jQuery，不太好
       $("#addressModal").modal("show");
+    },
+    close: function() {
+      $("#exampleModal").modal("hide");
+    },
+    addSubmit: function() {
+      var postAdd = {
+        name: this.$refs.name.value,
+        phoneNumber: this.$refs.phoneNumber.value,
+        province: this.$refs.province.value,
+        city: this.$refs.city.value,
+        county: this.$refs.county.value,
+        village: this.$refs.village.value,
+        detailedAddress: this.$refs.detailedAddress.value
+      }
+      console.log(postAdd)
+      this.$emit("submitAdd", postAdd);
     }
   },
   mounted() {
-    this.address.name = this.sAddress.name;
-    this.address.phoneNumber = this.sAddress.phoneNumber;
-    this.address.province = this.sAddress.province;
-    this.address.city = this.sAddress.city;
-    this.address.county = this.sAddress.county;
-    this.address.village = this.sAddress.village;
-    this.address.detailedAddress = this.sAddress.detailedAddress;
+    
   }
 };
 </script>
