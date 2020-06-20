@@ -148,6 +148,7 @@ import util from "../../util";
 import router from "../../router";
 
 export default {
+  name: "cart",
   data: function() {
     return {
       cartItems: [

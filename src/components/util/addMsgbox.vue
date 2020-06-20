@@ -1,44 +1,4 @@
 <template>
-  <!-- <div
-    class="modal fade"
-    id="addressModal"
-    ref="thisModal"
-    tabindex="-1"
-    role="dialog"
-    aria-labelledby="addressModalLabel"
-    aria-hidden="true"
-  >
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="addressModalLabel">修改地址</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-            <label for="name" class="col-form-label">收货人姓名</label>
-            <input type="text" class="form-control" id="name" :value="address.name" />
-          <label for="province">省</label>
-          <input type="text" id="province" :value="address.province" />
-          <label for="city">市</label>
-          <input type="text" id="city" :value="address.city" />
-          <label for="county">区</label>
-          <input type="text" id="county" :value="address.county" />
-          <label for="village">街道</label>
-          <input type="text" id="village" :value="address.village" />
-          <label for="detailAdd">详细地址</label>
-          <textarea id="detailAdd" cols="30" rows="10" :v-text="address.detailedAddress"></textarea>
-          <label for="phoneNum">电话</label>
-          <input type="text" id="phoneNum" :value="address.phoneNumber" />
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-success btn-sm" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>-->
-
   <div
     class="modal fade"
     id="addressModal"
