@@ -15,19 +15,19 @@
 		<meta name="description" content="网站简介" />
 		<!-- 网站简介 -->
 		<meta name="keywords" content="搜索关键字，以半角英文逗号隔开" />
-		<title>穷在闹市出品</title>
+		<title>JpetStore后台管理系统-用户列表</title>
 
 		<!-- 公共样式 开始 -->
 		<link rel="stylesheet" type="text/css" href="../../../src/assets/css/base.css">
 		<link rel="stylesheet" type="text/css" href="../../../src/assets/css/iconfont.css">
 		<script type="text/javascript" src="../../../src/assets/js/jquery-1.11.3.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="../../../src/assets/css/layui.css">
-		<script type="text/javascript" src="../../layui/layui.js"></script>
 		<!-- 滚动条插件 -->
 		<link rel="stylesheet" type="text/css" href="../../../src/assets/css/jquery.mCustomScrollbar.css">
 		<script src="../../../src/assets/js/jquery-ui-1.10.4.min.js"></script>
 		<script src="../../../src/assets/js/jquery.mousewheel.min.js"></script>
 		<script src="../../../src/assets/js/jquery.mCustomScrollbar.min.js"></script>
+		<script type="text/javascript" src="../src/assets/js/frame.js"></script>
 		<script src="../../../src/assets/js/cframe.js"></script><!-- 仅供所有子页面使用 -->
 		<!-- 公共样式 结束 -->
 
@@ -39,9 +39,9 @@
 				<form class="layui-form" action="">
 					<div class="layui-form-item">
 						<div class="layui-input-inline">
-							<input type="text" name="name" required lay-verify="required" placeholder="输入代理商名称" autocomplete="off" class="layui-input">
+							<input type="text" name="name" required lay-verify="required" placeholder="搜索…" autocomplete="off" class="layui-input">
 						</div>
-						<button class="layui-btn" lay-submit lay-filter="formDemo">检索</button>
+						<button class="layui-btn" lay-submit lay-filter="formDemo">搜索</button>
 					</div>
 				</form>
 
@@ -58,48 +58,38 @@
 				</script>
 			</div>
 			
-			<table class="layui-table">
+			<table class="layui-table" id="userTable">
 				<thead>
 					<tr>
-						<th>名称</th>
-						<th>描述</th>
-						<th>操作</th>
+						<th>用户ID</th>
+						<th>用户名</th>
+						<th>密码</th>
+						<th>手机号</th>
+						<th>昵称</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>豆面制品</td>
-						<td>例：豆腐、馒头、面条等</td>
+					<tr v-for="(user,index) in users" v-bind:key="user.userId">
+						<td>{{user.userId}}</td>
+						<td>{{user.username}}</td>
+						<td>{{user.password}}</td>
+						<td>{{user.phoneNumber}}</td>
+						<td>{{user.nickname}}</td>
 						<td>
-							<button class="layui-btn layui-btn-xs">修改</button>
-							<button class="layui-btn layui-btn-xs layui-btn-normal">添加二级分类</button>
-							<button class="layui-btn layui-btn-xs layui-btn-warm">查看二级分类</button>
+							<button class="layui-btn layui-btn-danger" @click="delete(index)">删除用户</button>
+							<button  class="layui-btn layui-btn-warm" @click="delete(index)">修改信息</button>
+							<a class="layui-btn layui-btn-primary" href="order_add.html">添加用户</a>
 						</td>
 					</tr>
-					<tr>
-						<td>豆面制品</td>
-						<td>例：豆腐、馒头、面条等</td>
-						<td>
-							<button class="layui-btn layui-btn-xs">修改</button>
-							<button class="layui-btn layui-btn-xs layui-btn-normal">添加二级分类</button>
-							<button class="layui-btn layui-btn-xs layui-btn-warm">查看二级分类</button>
-						</td>
-					</tr>
-					<tr>
-						<td>豆面制品</td>
-						<td>例：豆腐、馒头、面条等</td>
-						<td>
-							<button class="layui-btn layui-btn-xs">修改</button>
-							<button class="layui-btn layui-btn-xs layui-btn-normal">添加二级分类</button>
-							<button class="layui-btn layui-btn-xs layui-btn-warm">查看二级分类</button>
-						</td>
-					</tr>
+
 				</tbody>
 			</table>
 			
 			<!-- layUI 分页模块 -->
 			<div id="pages"></div>
 			<script>
+
+
 				layui.use(['laypage', 'layer'], function() {
 					var laypage = layui.laypage,
 						layer = layui.layer;
@@ -113,6 +103,27 @@
 					      console.log(obj)
 					    }
 					});
+				});
+			</script>
+
+			<script>
+				var vm = new Vue({
+					el: '#userTable',
+					data: function(){
+						return {
+							users: []
+						}
+					},
+					methods:{
+						delete:function (index) {
+							delete this.users[index];
+						}
+					},
+					watch:{
+						users:function () {
+							//把结果返回后端
+						}
+					}
 				});
 			</script>
 		</div>
