@@ -63,9 +63,9 @@
 </template>
 
 <script>
-import "../../../assets/css/iconfont.css";
-import "../../../assets/layui/css/layui.css";
-import "../../../assets/css/base.css";
+// import "../../../assets/css/iconfont.css";
+// import "../../../assets/layui/css/layui.css";
+// import "../../../assets/css/base.css";
 
 import layui from "../../../assets/layui/layui";
 
@@ -158,5 +158,11 @@ export default {
 };
 </script>
 
-<style>
+<style src="../../../assets/css/base.css" scoped>
+</style>
+<style src="../../../assets/layui/css/layui.css" scoped>
+</style>
+<style src="bootstrap/dist/css/bootstrap.min.css" scoped>
+</style>
+<style src="startbootstrap-grayscale/dist/css/styles.css" scoped>
 </style>

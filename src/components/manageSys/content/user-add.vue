@@ -135,3 +135,13 @@ export default {
   margin-right: 30%;
 }
 </style>
+<style src="../../../assets/css/base.css" scoped>
+</style>
+<style src="../../../assets/css/frame_sys.css" scoped>
+</style>
+<style src="../../../assets/css/iconfont.css" scoped>
+</style>
+<style src="../../../assets/layui/css/layui.css" scoped>
+</style>
+<style src="../../../assets/css/backHome.css" scoped>
+</style>

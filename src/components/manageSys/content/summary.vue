@@ -132,19 +132,19 @@
 
 <script>
 import echarts from "echarts";
-import "../../../assets/css/base.css";
-import "../../../assets/css/frame_sys.css";
-import "../../../assets/css/iconfont.css";
-import "../../../assets/js/frame.js";
+// import "../../../assets/css/base.css";
+// import "../../../assets/css/frame_sys.css";
+// import "../../../assets/css/iconfont.css";
+// import "../../../assets/js/frame.js";
 
 import "jquery";
 import "jqueryui";
 
-import "../../../assets/layui/css/layui.css";
-import "../../../assets/css/backHome.css";
+// import "../../../assets/layui/css/layui.css";
+// import "../../../assets/css/backHome.css";
 import painter from "../../../assets/js/backHome.js";
-import "../../../assets/js/china.js";
-import "../../../assets/js/cframe.js";
+// import "../../../assets/js/china.js";
+// import "../../../assets/js/cframe.js";
 
 export default {
   data: function() {
@@ -195,4 +195,14 @@ export default {
 </script>
 
 <style>
+</style>
+<style src="../../../assets/css/base.css" scoped>
+</style>
+<style src="../../../assets/css/frame_sys.css" scoped>
+</style>
+<style src="../../../assets/css/iconfont.css" scoped>
+</style>
+<style src="../../../assets/layui/css/layui.css" scoped>
+</style>
+<style src="../../../assets/css/backHome.css" scoped>
 </style>

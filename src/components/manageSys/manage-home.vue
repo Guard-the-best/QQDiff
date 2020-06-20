@@ -9,9 +9,6 @@
 
 <script>
 import sideBar from "./util/side-bar";
-import "../../assets/css/base.css";
-import "../../assets/css/frame_sys.css";
-import "../../assets/css/iconfont.css";
 import "../../assets/js/frame.js";
 
 export default {
@@ -22,5 +19,9 @@ export default {
 };
 </script>
 
-<style>
+<style src="../../assets/css/base.css" scoped>
+</style>
+<style src="../../assets/css/frame_sys.css" scoped>
+</style>
+<style src="../../assets/css/iconfont.css" scoped>
 </style>

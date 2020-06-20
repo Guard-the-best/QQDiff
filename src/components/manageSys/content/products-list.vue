@@ -47,11 +47,21 @@
           <td>{{ product.categoryId }}</td>
           <td>{{ product.productName }}</td>
           <td>
-            <button class="layui-btn layui-btn-xs" @click="updating(product)" data-toggle="modal" data-target="#updateModal">修改</button>
+            <button
+              class="layui-btn layui-btn-xs"
+              @click="updating(product)"
+              data-toggle="modal"
+              data-target="#updateModal"
+            >修改</button>
           </td>
         </tr>
         <tr>
-          <button @click="newing" class="layui-btn">新增</button>
+          <button
+            @click="newing()"
+            class="layui-btn"
+            data-toggle="modal"
+            data-target="#updateModal"
+          >新增</button>
         </tr>
       </tbody>
     </table>
@@ -79,9 +89,14 @@
             <form>
               <div class="form-group">
                 <label for="province" class="col-form-label">所属类别</label>
-                <input type="text" id="province" class="form-control" :value="curProduct.categoryId" />
+                <input
+                  type="text"
+                  id="province"
+                  class="form-control"
+                  v-model="curProduct.categoryId"
+                />
                 <label for="city" class="col-form-label">商品名称</label>
-                <input type="text" id="city" class="form-control" :value="curProduct.productName" />
+                <input type="text" id="city" class="form-control" v-model="curProduct.productName" />
               </div>
               <!-- <div class="form-group">
             <label for="message-text" class="col-form-label">Message:</label>
@@ -105,9 +120,9 @@
 </template>
 
 <script>
-import "../../../assets/css/iconfont.css";
-import "../../../assets/layui/css/layui.css";
-import "../../../assets/css/base.css";
+// import "../../../assets/css/iconfont.css";
+// import "../../../assets/layui/css/layui.css";
+// import "../../../assets/css/base.css";
 
 import layui from "../../../assets/layui/layui";
 
@@ -129,7 +144,7 @@ export default {
       new: false,
       curProduct: {
         productId: null,
-        categoryId: 0,
+        categoryId: "",
         productName: ""
       }
     };
@@ -148,16 +163,30 @@ export default {
         });
     },
     updating: function(product) {
-      this.new = true;
-      this.curProduct = product;
+      this.new = false;
+      this.curProduct.productId = product.productId;
+      this.curProduct.productName = product.productName;
+      this.curProduct.categoryId = product.categoryId;
     },
     newing: function() {
-      this.new = false;
+      this.new = true;
       this.curProduct = {
         productId: null,
-        categoryId: null,
+        categoryId: "",
         productName: ""
       };
+    },
+    updateSubmit: function() {
+      console.log(this.curProduct);
+      util.myaxios
+        // .post("http://localhost:8080/goods/product", {
+        //   product: this.curProduct
+        // })
+        .post("http://localhost:8080/goods/product", this.curProduct)
+        .then(res => {
+          this.fetchData();
+          console.log(res.status);
+        });
     }
   },
   mounted() {
@@ -199,5 +228,11 @@ export default {
 };
 </script>
 
-<style>
+<style src="../../../assets/css/base.css" scoped>
+</style>
+<style src="../../../assets/layui/css/layui.css" scoped>
+</style>
+<style src="bootstrap/dist/css/bootstrap.min.css" scoped>
+</style>
+<style src="startbootstrap-grayscale/dist/css/styles.css" scoped>
 </style>
