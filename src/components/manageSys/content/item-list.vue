@@ -182,7 +182,12 @@ export default {
         });
     },
     updateSubmit: function() {
-      util.myaxios.post("");
+      util.myaxios
+        .post("http://localhost:8080/goods/items", this.curItem)
+        .then(res => {
+          console.log(res.status);
+          this.fetchData();
+        });
     },
     updating: function(item) {
       this.curItem = item;
