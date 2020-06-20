@@ -1,6 +1,7 @@
 <template>
   <div>
     <msgbox ref="msgbox" :msg="message" />
+    <addMsgbox ref="addMsgbox" :address="address" @submitAdd="toSubmitAdd" />
     <div class="pb-5">
       <div class="container">
         <div class="alert alert-info alert-dismissible">
@@ -42,7 +43,18 @@
                   <td class="align-middle">{{ address.detailedAddress }}</td>
                   <td lass="align-middle">{{ address.phoneNumber }}</td>
                   <td lass="align-middle">
-                    <a href="javascript:void(0)">修改</a>
+                    <a href="javascript:void(0)" @click="toShowAdd">修改</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="align-middle">
+                    <button
+                      type="button"
+                      class="btn btn-info btn-sm"
+                      v-on:click="toShowAdd"
+                      href="javascript:void(0)"
+                      v-show="emptyAdd"
+                    >添加一个新的地址</button>
                   </td>
                 </tr>
               </tbody>
@@ -155,6 +167,7 @@ import "startbootstrap-grayscale/dist/css/styles.css";
 import router from "../../router";
 import util from "../../util";
 import msgbox from "../util/msgbox-normal";
+import addMsgbox from "../util/addMsgbox";
 
 export default {
   data: function() {
@@ -217,17 +230,70 @@ export default {
           if (res.data.status == 200) {
             this.message = "订单提交成功";
             this.$refs.msgbox.showUp();
+            util.myaxios
+              .post(
+                "http://localhost:8080/cart",
+                localStorage.getItem("username")
+              )
+              .then(res => {
+                console.log(res.status);
+              });
           } else {
             this.message = "提交失败，Error: " + res.data.status;
+            this.$refs.msgbox.showUp();
+          }
+        });
+    },
+    fetchAdd: function() {
+      util.myaxios
+        .get(
+          "http://localhost:8080/user/address?username=" +
+            localStorage.getItem("username")
+        )
+        .then(res => {
+          console.log(res);
+          if (res.data.data == null) {
+            this.emptyAdd = true;
+            // this.address = {
+            //   name: "",
+            //   phoneNumber: "",
+            //   province: "",
+            //   city: "",
+            //   county: "",
+            //   village: "",
+            //   detailedAddress: ""
+            // };
+          } else {
+            this.address = res.data.data;
+            this.emptyAdd = false;
+          }
+        });
+    },
+    toShowAdd: function() {
+      this.$refs.addMsgbox.showUp();
+    },
+    toSubmitAdd: function(add) {
+      console.log(add);
+      this.address = add;
+      util.myaxios
+        .patch("http://localhost:8080/user/address", {
+          username: localStorage.getItem("username"),
+          address: add
+        })
+        .then(res => {
+          if (res.status == 200) {
+            this.message = "修改成功";
             this.$refs.msgbox.showUp();
           }
         });
     }
   },
   components: {
+    addMsgbox,
     msgbox
   },
   beforeMount() {
+    this.fetchAdd();
     this.items = this.$route.params.items;
     if (this.items == null) {
       alert("没货你下你妈的单呢");

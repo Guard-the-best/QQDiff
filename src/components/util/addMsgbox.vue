@@ -30,7 +30,7 @@
               <input type="text" id="village" class="form-control" :value="address.village" ref="village" />
               <label for="detailAdd" class="col-form-label">详细地址</label>
               <input type="text" id="village" class="form-control" :value="address.detailedAddress" ref="detailedAddress" />
-              <p>{{address.detailedAddress}}</p>
+              <!-- <p>{{address.detailedAddress}}</p> -->
               <label for="phoneNum" class="col-form-label">电话</label>
               <input type="text" id="phoneNum" class="form-control" :value="address.phoneNumber" ref="phoneNumber" />
             </div>

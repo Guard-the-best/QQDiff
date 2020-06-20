@@ -48,17 +48,74 @@
           <td>{{ item.inventory }}</td>
           <td>{{ item.attributes }}</td>
           <td>
-            <button class="layui-btn layui-btn-xs" onclick="updateBut()">修改</button>
+            <button
+              class="layui-btn layui-btn-xs"
+              @click="updating(item)"
+              data-toggle="modal"
+              data-target="#updateModal"
+            >修改</button>
           </td>
         </tr>
         <tr>
-          <button @click="addUserSubmit()" class="layui-btn">新增</button>
+          <button
+            @click="newing()"
+            class="layui-btn"
+            data-toggle="modal"
+            data-target="#updateModal"
+          >新增</button>
         </tr>
       </tbody>
     </table>
 
     <!-- layUI 分页模块 -->
     <div id="pages"></div>
+
+    <div
+      class="modal fade"
+      id="updateModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="updateModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="updateModalLabel">修改信息</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="province" class="col-form-label">所属商品</label>
+                <input type="text" id="province" class="form-control" v-model="curItem.productId" />
+                <label for="city" class="col-form-label">单价</label>
+                <input type="text" id="city" class="form-control" v-model="curItem.listPrice" />
+                <label for="a" class="col-form-label">库存</label>
+                <input type="number" id="a" class="form-control" v-model="curItem.inventory" />
+                <label for="b" class="col-form-label">详细介绍</label>
+                <input type="text" id="b" class="form-control" v-model="curItem.attributes" />
+              </div>
+              <!-- <div class="form-group">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+              </div>-->
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-dismiss="modal"
+              @click="updateSubmit"
+            >保存修改</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -101,7 +158,14 @@ export default {
           attirbutes: "king-lonely-bold"
         }
       ],
-      new: false
+      new: false,
+      curItem: {
+        itemId: null,
+        productId: "",
+        listPrice: "",
+        inventory: "",
+        attirbutes: ""
+      }
     };
   },
   methods: {
@@ -116,6 +180,21 @@ export default {
         .then(res => {
           this.items = res.data.data;
         });
+    },
+    updateSubmit: function() {
+      util.myaxios.post("");
+    },
+    updating: function(item) {
+      this.curItem = item;
+    },
+    newing: function() {
+      this.curItem = {
+        itemId: null,
+        productId: "",
+        listPrice: "",
+        inventory: "",
+        attirbutes: ""
+      };
     }
   },
   mounted() {

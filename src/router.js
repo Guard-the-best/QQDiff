@@ -10,6 +10,7 @@ import items from './components/content/items'
 import cart from './components/content/cart'
 import checkout from './components/content/checkout'
 import personalInfo from './components/content/personalInfo'
+import order from './components/content/order'
 
 import management from './components/manageSys/manage-home'
 
@@ -34,7 +35,8 @@ export default new VueRouter({
         { path: '/goods/products/:productName/items', components: { default: items } },
         { path: '/cart', components: { default: cart } },
         { path: '/checkout', name: 'checkout', components: { default: checkout } },
-        { path: '/user/info', components: { default: personalInfo } }
+        { path: '/user/info', components: { default: personalInfo } },
+        { path: '/order', components: { default: order } }
       ]
     },
     {

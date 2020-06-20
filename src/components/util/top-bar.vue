@@ -60,25 +60,18 @@
                 </router-link>
               </li>
               <li>
-                <a
+                <router-link
                   class="dropdown-item"
-                  onclick="searchPage('/toModifyInfoServlet')"
+                  to="/user/info"
                   href="javascript:void(0)"
-                >个人信息</a>
+                >个人信息</router-link>
               </li>
               <li>
-                <a
+                <router-link
                   class="dropdown-item"
-                  onclick="searchPage('/toOrderPage')"
+                  to="/order"
                   href="javascript:void(0)"
-                >我的订单</a>
-              </li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  onclick="searchPage('/toChangePassword')"
-                  href="javascript:void(0)"
-                >修改密码</a>
+                >我的订单</router-link>
               </li>
             </ul>
           </li>
