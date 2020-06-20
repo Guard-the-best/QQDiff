@@ -22,12 +22,12 @@
 		<link rel="stylesheet" type="text/css" href="../../../src/assets/css/iconfont.css">
 		<script type="text/javascript" src="../../../src/assets/js/jquery-1.11.3.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="../../../src/assets/css/layui.css">
-		<script type="text/javascript" src="../../layui/layui.js"></script>
 		<!-- 滚动条插件 -->
 		<link rel="stylesheet" type="text/css" href="../../../src/assets/css/jquery.mCustomScrollbar.css">
 		<script src="../../../src/assets/js/jquery-ui-1.10.4.min.js"></script>
 		<script src="../../../src/assets/js/jquery.mousewheel.min.js"></script>
 		<script src="../../../src/assets/js/jquery.mCustomScrollbar.min.js"></script>
+		<script type="text/javascript" src="../src/assets/js/frame.js"></script>
 		<script src="../../../src/assets/js/cframe.js"></script><!-- 仅供所有子页面使用 -->
 		<!-- 公共样式 结束 -->
 
@@ -39,9 +39,9 @@
 				<form class="layui-form" action="">
 					<div class="layui-form-item">
 						<div class="layui-input-inline">
-							<input type="text" name="name" required lay-verify="required" placeholder="输入代理商名称" autocomplete="off" class="layui-input">
+							<input type="text" name="name" required lay-verify="required" placeholder="搜索…" autocomplete="off" class="layui-input">
 						</div>
-						<button class="layui-btn" lay-submit lay-filter="formDemo">检索</button>
+						<button class="layui-btn" lay-submit lay-filter="formDemo">搜索</button>
 					</div>
 				</form>
 
@@ -58,69 +58,37 @@
 				</script>
 			</div>
 			
-			<table class="layui-table">
+			<table class="layui-table" id="userTable">
 				<thead>
 					<tr>
-						<th>代理商名称</th>
-						<th>代理商编码</th>
-						<th>所属区域</th>
-						<th>负责人</th>
-						<th>登录名</th>
-						<th>联系方式</th>
-						<th>传真</th>
-						<th>邮箱</th>
-						<th>操作</th>
+						<th>用户ID</th>
+						<th>用户名</th>
+						<th>密码</th>
+						<th>手机号</th>
+						<th>昵称</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<td>穷在闹市</td>
-						<td>DLS201802281450280741</td>
-						<td>无锡市</td>
-						<td>穷在闹市</td>
-						<td>穷在闹市</td>
-						<td>18600001111</td>
-						<td>028-6666666</td>
-						<td>123456789@qq.com</td>
+					<tr v-for="(user,index) in users" v-bind:key="user.userId">
+						<td>{{user.userId}}</td>
+						<td>{{user.username}}</td>
+						<td>{{user.password}}</td>
+						<td>{{user.phoneNumber}}</td>
+						<td>{{user.nickname}}</td>
 						<td>
-							<button class="layui-btn layui-btn-xs">修改</button>
-							<button class="layui-btn layui-btn-xs">基本信息</button>
+							<button class="layui-btn layui-btn-danger" @click="delete(index)">删除用户</button>
+							<a class="layui-btn layui-btn-primary" href="agent_add.html">添加用户</a>
 						</td>
 					</tr>
-					<tr>
-						<td>穷在闹市</td>
-						<td>DLS201802281450280741</td>
-						<td>无锡市</td>
-						<td>穷在闹市</td>
-						<td>穷在闹市</td>
-						<td>18600001111</td>
-						<td>028-6666666</td>
-						<td>123456789@qq.com</td>
-						<td>
-							<button class="layui-btn layui-btn-xs">修改</button>
-							<button class="layui-btn layui-btn-xs">基本信息</button>
-						</td>
-					</tr>
-					<tr>
-						<td>穷在闹市</td>
-						<td>DLS201802281450280741</td>
-						<td>无锡市</td>
-						<td>穷在闹市</td>
-						<td>穷在闹市</td>
-						<td>18600001111</td>
-						<td>028-6666666</td>
-						<td>123456789@qq.com</td>
-						<td>
-							<button class="layui-btn layui-btn-xs">修改</button>
-							<button class="layui-btn layui-btn-xs">基本信息</button>
-						</td>
-					</tr>
+
 				</tbody>
 			</table>
 			
 			<!-- layUI 分页模块 -->
 			<div id="pages"></div>
 			<script>
+
+
 				layui.use(['laypage', 'layer'], function() {
 					var laypage = layui.laypage,
 						layer = layui.layer;
@@ -134,6 +102,25 @@
 					      console.log(obj)
 					    }
 					});
+				});
+			</script>
+
+			<script>
+				var vm = new Vue({
+					el: '#userTable',
+					data: {
+						users: []
+					},
+					methods:{
+						delete:function (index) {
+							delete this.users[index];
+						}
+					},
+					watch:{
+						users:function () {
+							//把结果返回后端
+						}
+					}
 				});
 			</script>
 		</div>
