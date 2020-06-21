@@ -16,7 +16,7 @@
                   </div>
                   <div class="data1">
                     <p>订单总数</p>
-                    <h1>{{number_of_orders}}}</h1>
+                    <h1>{{number_of_orders}}</h1>
                   </div>
                   <div class="data2">
                     <p>与上月数量比</p>
@@ -133,9 +133,9 @@
 <script>
 import echarts from "echarts";
 // import "../../../assets/css/base.css";
-// import "../../../assets/css/frame_sys.css";
+import "../../../assets/css/frame_sys.css";
 // import "../../../assets/css/iconfont.css";
-// import "../../../assets/js/frame.js";
+import "../../../assets/js/frame.js";
 
 import "jquery";
 import "jqueryui";
