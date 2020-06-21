@@ -20,6 +20,7 @@ import userAdd from './components/manageSys/content/user-add'
 import categoriesManage from './components/manageSys/content/categories-list'
 import productsManage from './components/manageSys/content/products-list'
 import itemsManage from './components/manageSys/content/item-list'
+import orderManage from './components/manageSys/content/order-manage'
 
 Vue.use(VueRouter)
 
@@ -46,7 +47,8 @@ export default new VueRouter({
         { path: 'userAdd', components: { default: userAdd } },
         { path: 'categories', components: { default: categoriesManage } },
         { path: 'products/:categoryName', components: { default: productsManage } },
-        { path: 'items/:productName', components: { default: itemsManage } }
+        { path: 'items/:productName', components: { default: itemsManage } },
+        { path: 'orders', components: { default: orderManage } }
       ]
     }
   ]

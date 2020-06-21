@@ -58,6 +58,7 @@ import layui from "../../../assets/layui/layui";
 
 import "jquery";
 import "jqueryui";
+import util from '../../../util';
 export default {
   name: "userManagement",
   data: function() {
@@ -81,6 +82,9 @@ export default {
     };
   },
   methods: {
+    fetchData: function() {
+      util.myaxios.get()
+    },
     toDelete: function(index) {}
   },
   mounted() {
