@@ -55,33 +55,32 @@
               <router-link
                 to="/management/categories"
                 class="menua1"
-                href="javascript:menu_ajax('tgls/reportForm/reportForm1.html', '统计报表')"
               >
                 <i class="iconfont icon-icon left"></i>
                 <p>商品管理</p>
               </router-link>
             </li>
             <li class="menuli1">
-              <a
+              <router-link
                 class="menua1"
-                href="javascript:menu_ajax('tgls/reportForm/reportForm1.html', '统计报表')"
+                to="/management/orders"
               >
                 <i class="iconfont icon-icon left"></i>
                 <p>统计报表</p>
-              </a>
+              </router-link>
             </li>
             <li class="menuli1">
-              <a class="menua1" href="javascript:menu_ajax('tgls/customer_card.html', '用户和权限管理')">
+              <a class="menuli1">
                 <i class="iconfont icon-yingyongzhongxin left"></i>
                 <p>用户和权限管理</p>
               </a>
             </li>
-            <li class="menuli1">
+            <!-- <li class="menuli1">
               <a class="menua1" href="javascript:menu_ajax('tgls/customer_card.html', '知识管理')">
                 <i class="iconfont icon-zhishi left"></i>
                 <p>知识管理</p>
               </a>
-            </li>
+            </li> -->
           </ul>
       </div>
 
