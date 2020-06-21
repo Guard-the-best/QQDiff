@@ -37,12 +37,16 @@
           <td>$ {{price[index]}}</td>
           <td>{{order.shipAddress}}</td>
           <td>
-            <button class="layui-btn layui-btn-xs" @click="updating(index)">修改订单</button>
+            <button
+              class="layui-btn layui-btn-xs"
+              @click="updating(order)"
+              data-toggle="modal"
+              data-target="#updateModal"
+            >修改订单</button>
           </td>
           <td>
             <button class="layui-btn layui-btn-danger" @click="toDelete(index)">删除订单</button>
           </td>
-          
         </tr>
         <!-- <br />
           <table>
@@ -55,12 +59,53 @@
                 <td>{{item.number}}</td>
               </tr>
             </tbody>
-          </table> -->
+        </table>-->
       </tbody>
     </table>
 
     <!-- layUI 分页模块 -->
     <div id="pages"></div>
+
+    <div
+      class="modal fade"
+      id="updateModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="updateModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="updateModalLabel">修改地址</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="province" class="col-form-label">地址</label>
+                <input type="text" id="province" class="form-control" v-model="curOrder.shipAddress" />
+              </div>
+              <!-- <div class="form-group">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+              </div>-->
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              data-dismiss="modal"
+              @click="updateSubmit"
+            >保存修改</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -71,20 +116,25 @@ export default {
   data: function() {
     return {
       price: [],
-      orders: []
+      orders: [],
+      curOrder: {
+        orderId: "",
+        userId: "",
+        orderDate: "",
+        shipAddress: "",
+        billAddress: "",
+        status: "",
+        items: ""
+      }
     };
   },
 
   methods: {
     fetchData: function() {
-      util.myaxios
-        .get(
-          "http://localhost:8080/order/all"
-        )
-        .then(res => {
-          this.orders = res.data.data;
-          this.calPrice();
-        });
+      util.myaxios.get("http://localhost:8080/order/all").then(res => {
+        this.orders = res.data.data;
+        this.calPrice();
+      });
     },
     calPrice: function() {
       for (var i in this.orders) {
@@ -95,10 +145,21 @@ export default {
         }
         this.price.push(curP);
       }
+    },
+    updating: function(order) {
+      this.curOrder = order;
+    },
+    updateSubmit: function() {
+      util.myaxios
+        .patch("http://localhost:8080/order", this.curOrder)
+        .then(res => {
+          console.log(res.status);
+          this.fetchData();
+        });
     }
   },
   mounted() {
-    this.fetchData()
+    this.fetchData();
   }
 };
 </script>
