@@ -43,6 +43,7 @@
             <a
               class="nav-link js-scroll-trigger dropdown-toggle"
               data-toggle="dropdown"
+              v-on:click="updateLength()"
               href="javascript:void(0)"
             >
               个人中心
