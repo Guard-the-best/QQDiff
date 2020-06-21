@@ -76,11 +76,11 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a
+            <router-link
               class="nav-link js-scroll-trigger"
-              onclick="searchPage('/toChangePassword')"
+              to="/management"
               href="#"
-            >销售情况</a>
+            >销售情况</router-link>
           </li>
           <!-- <li class="nav-item">
                 <a class="nav-link js-scroll-trigger"  href="/logout">退出登录</a>
